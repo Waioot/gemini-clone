@@ -176,7 +176,7 @@
   }
 }
 
-.result-data p {
+.result-data .result-data-markdown {
   font-size: 17px;
   line-height: 1.8;
   font-weight: 300;

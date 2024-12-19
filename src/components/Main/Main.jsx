@@ -2,6 +2,7 @@ import { assets } from '../../assets/assets';
 import './Main.css';
 import { useContext } from 'react';
 import { Context } from '../../context/Context';
+import Markdown from 'react-markdown';
 
 export const Main = () => {
   const {
@@ -53,7 +54,9 @@ export const Main = () => {
           <div className='result'>
             <div className='result-title'>
               <img src={assets.user_icon} alt='user' />
-              <p>{recentPrompt}</p>
+              <div className='result-data-markdown'>
+                <Markdown>{recentPrompt}</Markdown>
+              </div>
             </div>
             <div className='result-data'>
               <img src={assets.gemini_icon} alt='gemini' />
@@ -64,7 +67,9 @@ export const Main = () => {
                   <hr />
                 </div>
               ) : (
-                <p>{resultData}</p>
+                <div className='result-data-markdown'>
+                  <Markdown>{resultData}</Markdown>
+                </div>
               )}
             </div>
           </div>
