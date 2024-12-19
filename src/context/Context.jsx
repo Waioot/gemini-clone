@@ -5,7 +5,7 @@ export const Context = createContext();
 
 const ContextProvider = ({ children }) => {
   // 输入框的值
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState('what is the meaning of life');
   // 最近提问的内容
   const [recentPrompt, setRecentPrompt] = useState('');
   // 之前的对话记录
