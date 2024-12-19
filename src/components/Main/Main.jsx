@@ -1,19 +1,25 @@
 import { assets } from '../../assets/assets';
 import './Main.css';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Context } from '../../context/Context';
-import Markdown from 'react-markdown';
+import Record from '../Record/Record';
 
 export const Main = () => {
-  const {
-    onSent,
-    recentPrompt,
-    showResult,
-    isLoading,
-    resultData,
-    input,
-    setInput,
-  } = useContext(Context);
+  const { onSent, chatInfo, input, setInput } = useContext(Context);
+
+  // 监听输入后的回车
+  const handleKeyDown = e => {
+    if (e.key === 'Enter') {
+      onSent(input);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
 
   return (
     <div className='main'>
@@ -23,7 +29,7 @@ export const Main = () => {
       </div>
 
       <div className='main-container'>
-        {!showResult ? (
+        {!chatInfo.showResult ? (
           <>
             <div className='greet'>
               <p>
@@ -52,28 +58,19 @@ export const Main = () => {
           </>
         ) : (
           <div className='result'>
-            <div className='result-title'>
-              <img src={assets.user_icon} alt='user' />
-              <div className='result-data-markdown'>
-                <Markdown>{recentPrompt}</Markdown>
-              </div>
-            </div>
-            <div className='result-data'>
-              <img src={assets.gemini_icon} alt='gemini' />
-              {isLoading ? (
-                <div className='loader'>
-                  <hr />
-                  <hr />
-                  <hr />
-                </div>
-              ) : (
-                <div className='result-data-markdown'>
-                  <Markdown>{resultData}</Markdown>
-                </div>
-              )}
-            </div>
+            {chatInfo.records.map((record, index) => (
+              <Record
+                key={index}
+                record={record}
+                // 最后一个记录是否正在加载的
+                isLoading={
+                  index === chatInfo.records.length - 1 && chatInfo.isLoading
+                }
+              />
+            ))}
           </div>
         )}
+
         <div className='main-bottom'>
           <div className='search-box'>
             <input

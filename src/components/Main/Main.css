@@ -131,17 +131,16 @@
 .result::-webkit-scrollbar {
   display: none;
 }
-
+.result img {
+  width: 40px;
+  border-radius: 50%;
+}
+/* 
 .result-title {
   margin: 40px 0;
   display: flex;
   align-items: center;
   gap: 20px;
-}
-
-.result img {
-  width: 40px;
-  border-radius: 50%;
 }
 
 .result-data {
@@ -180,4 +179,4 @@
   font-size: 17px;
   line-height: 1.8;
   font-weight: 300;
-}
+} */

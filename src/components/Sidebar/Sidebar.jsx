@@ -2,10 +2,11 @@ import { useState, useContext } from 'react';
 import './Sidebar.css';
 import { assets } from '../../assets/assets';
 import { Context } from '../../context/Context';
+import DialogItem from '../DialogItem/DialogItem';
 
 const Sidebar = () => {
-  const [extended, setExtended] = useState(false);
-  const { prevPrompts } = useContext(Context);
+  const [extended, setExtended] = useState(true);
+  const { dialogueList, newChat } = useContext(Context);
 
   return (
     <div className='sidebar'>
@@ -17,18 +18,16 @@ const Sidebar = () => {
           onClick={() => setExtended(!extended)}
         />
         <div className='new-chat'>
-          <img src={assets.plus_icon} alt='plus' />
+          <img src={assets.plus_icon} alt='plus' onClick={newChat} />
           {extended && <p>New Chat</p>}
         </div>
         {extended && (
           <div className='recent'>
             <p className='recent-title'>Recent</p>
-            {prevPrompts.map((prompt, index) => (
-              <div className='recent-entry' key={index}>
-                <img src={assets.message_icon} alt='message' />
-                <p>{prompt.slice(0, 10)}</p>
-              </div>
-            ))}
+            {dialogueList.length > 0 &&
+              dialogueList.map((dialogue, index) => (
+                <DialogItem key={index} dialogue={dialogue} index={index} />
+              ))}
           </div>
         )}
       </div>
