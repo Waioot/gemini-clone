@@ -31,10 +31,12 @@ const ContextProvider = ({ children }) => {
   }
 
   const onSent = async () => {
+    if (input.trim() === '') return;
     setIsLoading(true);
     setResultData('');
     setShowResult(true);
     setRecentPrompt(input);
+    setPrevPrompts(prev => [...prev, input]);
     const response = await run(input);
     console.log(response);
     const interval = typingEffect(response, setResultData);
