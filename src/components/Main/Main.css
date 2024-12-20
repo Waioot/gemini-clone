@@ -15,6 +15,31 @@
   color: #585858;
 }
 
+.main .nav-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.main .nav-left:hover {
+  cursor: pointer;
+  background-color: #ededed;
+}
+
+.main .nav .model-name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.main .nav .model-version {
+  font-size: 14px;
+  font-weight: 300;
+  color: #575b5f;
+}
+
 .main .nav img {
   width: 40px;
   height: 40px;

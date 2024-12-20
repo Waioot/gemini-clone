@@ -1,11 +1,14 @@
 import { assets } from '../../assets/assets';
 import './Main.css';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../context/Context';
 import Record from '../Record/Record';
-
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ModelList from '../ModelList/ModelList';
 export const Main = () => {
   const { onSent, chatInfo, input, setInput } = useContext(Context);
+
+  const [modelOpen, setModelOpen] = useState(false);
 
   // 监听输入后的回车
   const handleKeyDown = e => {
@@ -22,12 +25,24 @@ export const Main = () => {
     };
   }, [handleKeyDown]);
 
+  const handleModelClick = () => {
+    setModelOpen(!modelOpen);
+  };
+
   return (
     <div className='main'>
       <div className='nav'>
-        <p>Gemini</p>
+        <div className='nav-left' onClick={handleModelClick}>
+          <div className='model-name'>
+            <p>Gemini</p>
+            <ArrowDropDownIcon />
+          </div>
+          <div className='model-version'>1.5 Flash</div>
+        </div>
         <img src={assets.user_icon} alt='user' />
       </div>
+
+      {modelOpen && <ModelList />}
 
       <div className='main-container'>
         {!chatInfo.showResult ? (
