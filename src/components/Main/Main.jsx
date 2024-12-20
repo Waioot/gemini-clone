@@ -25,14 +25,20 @@ export const Main = () => {
     };
   }, [handleKeyDown]);
 
-  const handleModelClick = () => {
-    setModelOpen(!modelOpen);
+  const handleCloseModelClick = () => {
+    setModelOpen(false);
   };
 
   return (
     <div className='main'>
       <div className='nav'>
-        <div className='nav-left' onClick={handleModelClick}>
+        <div
+          className='nav-left'
+          onClick={e => {
+            e.stopPropagation();
+            setModelOpen(prev => !prev);
+          }}
+        >
           <div className='model-name'>
             <p>Gemini</p>
             <ArrowDropDownIcon />
@@ -42,7 +48,7 @@ export const Main = () => {
         <img src={assets.user_icon} alt='user' />
       </div>
 
-      {modelOpen && <ModelList />}
+      {modelOpen && <ModelList handleCloseModelClick={handleCloseModelClick} />}
 
       <div className='main-container'>
         {!chatInfo.showResult ? (

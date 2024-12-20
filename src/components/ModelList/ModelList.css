@@ -1,5 +1,7 @@
 .model-list-wrapper {
-  /* position: absolute; */
+  position: absolute;
+  top: 76px;
+  left: 20px;
   display: flex;
   flex-direction: column;
   width: 320px;
@@ -8,8 +10,7 @@
   background-color: #f0f4f9;
   padding: 10px;
   font-size: 14px;
-  margin-left: 20px;
-  margin-top: -20px;
+  z-index: 1000;
 }
 
 .model-list-wrapper .model-list-head {

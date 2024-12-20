@@ -1,5 +1,6 @@
 import { assets } from '../../assets/assets';
-
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import './ModelList.css';
 const ModelListData = [
@@ -14,7 +15,16 @@ const ModelListData = [
     isSelected: false,
   },
 ];
-const ModelList = () => {
+
+const ModelList = ({ handleCloseModelClick }) => {
+  // 点击弹窗外关闭
+  useEffect(() => {
+    window.addEventListener('click', handleCloseModelClick);
+    return () => {
+      window.removeEventListener('click', handleCloseModelClick);
+    };
+  }, [handleCloseModelClick]);
+
   return (
     <div className='model-list-wrapper'>
       <div className='model-list-head'>
@@ -45,6 +55,10 @@ const ModelList = () => {
       </div>
     </div>
   );
+};
+
+ModelList.propTypes = {
+  handleCloseModelClick: PropTypes.func.isRequired,
 };
 
 export default ModelList;
