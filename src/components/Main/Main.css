@@ -3,6 +3,7 @@
   width: 100%;
   flex: 1;
   padding-bottom: 15vh;
+  position: relative;
 }
 
 .main .nav {
@@ -79,13 +80,17 @@
 .main-bottom {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
+  /* width: 100%; */
   max-width: 900px;
   padding: 0 20px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .search-box {
+  max-width: 900px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -146,4 +151,20 @@
 .result img {
   width: 40px;
   border-radius: 50%;
+}
+
+@media (max-width: 600px) {
+  .main-bottom input {
+    flex: none;
+    width: 150px;
+  }
+  .main-bottom img {
+    width: 20px;
+  }
+  .search-box {
+    padding: 5px 10px;
+  }
+  .search-box div {
+    gap: 5px;
+  }
 }
