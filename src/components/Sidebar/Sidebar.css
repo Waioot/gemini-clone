@@ -5,6 +5,7 @@
   position: relative;
   width: 60px;
 }
+
 .sidebar.expanded {
   width: 320px; /* 展开时的宽度 */
 }
@@ -51,7 +52,6 @@
 
 .new-chat-btn.expanded {
   background-color: #e6eaf1;
-  width: 100%;
   border-radius: 50px;
 }
 
@@ -71,7 +71,11 @@
 .sidebar .recent-wapper {
   display: flex;
   flex-direction: column;
+}
+
+.recent-title {
   margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .sidebar .bottom {
