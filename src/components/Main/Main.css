@@ -126,10 +126,14 @@
   padding: 0 5%;
   max-height: 75vh;
   overflow-y: scroll;
+  /* Firefox */
+  scrollbar-width: none;
+  /* WebKit */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
 .result::-webkit-scrollbar {
-  display: none;
+  display: none; /* Chrome, Safari, Opera */
 }
 .result img {
   width: 40px;
