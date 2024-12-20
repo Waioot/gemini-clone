@@ -1,9 +1,10 @@
 .main {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   flex: 1;
   padding-bottom: 15vh;
   position: relative;
+  overflow: hidden;
 }
 
 .main .nav {
@@ -47,6 +48,8 @@
 }
 
 .main .main-container {
+  height: calc(100vh - 80px); /* 减去导航栏高度 */
+  overflow: hidden; /* 防止内容溢出 */
   max-width: 900px;
   margin: auto;
 }
@@ -162,8 +165,8 @@
 
 .result {
   padding: 0 5%;
-  max-height: 75vh;
-  overflow-y: scroll;
+  height: calc(100vh - 200px); /* 计算剩余可用高度 */
+  overflow-y: auto;
   /* Firefox */
   scrollbar-width: none;
   /* WebKit */
