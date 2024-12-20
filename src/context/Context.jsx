@@ -53,7 +53,6 @@ const ContextProvider = ({ children }) => {
     setCurrentDialogueIndex(prev => prev + 1);
   }
   function changeDialogue(index) {
-    console.log(index);
     setCurrentDialogueIndex(index);
     setChatInfo({
       ...initialState,
@@ -74,7 +73,6 @@ const ContextProvider = ({ children }) => {
     setChatInfo(newChatInfo);
 
     const response = await run(input);
-    console.log(response);
     // 打字机效果
     const interval = typingEffect(response, 10);
     setChatInfo(prev => ({ ...prev, isLoading: false }));
