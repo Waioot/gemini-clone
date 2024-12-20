@@ -9,6 +9,7 @@ export const Main = () => {
 
   // 监听输入后的回车
   const handleKeyDown = e => {
+    if (input.length === 0) return;
     if (e.key === 'Enter') {
       onSent(input);
     }
@@ -83,6 +84,10 @@ export const Main = () => {
               <img src={assets.gallery_icon} alt='gallery' />
               <img src={assets.mic_icon} alt='mic' />
               <img
+                disabled={chatInfo.isLoading || input.length === 0}
+                className={
+                  chatInfo.isLoading || input.length === 0 ? 'disabled' : ''
+                }
                 onClick={() => onSent(input)}
                 src={assets.send_icon}
                 alt='send'
