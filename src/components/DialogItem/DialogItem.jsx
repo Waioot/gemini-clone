@@ -3,13 +3,17 @@ import { assets } from '../../assets/assets';
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { Context } from '../../context/Context';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 const DialogItem = ({ dialogue, index }) => {
   const { changeDialogue } = useContext(Context);
   return (
     <div className='recent-entry' onClick={() => changeDialogue(index)}>
       <img src={assets.message_icon} alt='message' />
-      <p>{dialogue[0]?.question.slice(0, 18)}</p>
+      <p>{dialogue[0]?.question.slice(0, 35)}</p>
+      <div className='delete-btn'>
+        <DeleteOutlinedIcon />
+      </div>
     </div>
   );
 };
